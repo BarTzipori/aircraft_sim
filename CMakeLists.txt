@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.8)
+project(aircraft_sim LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_executable(aircraft_sim src/main.cpp src/Aircraft.cpp src/FlightPlan.cpp
+                            src/FlightPlanJson.cpp src/Simulator.cpp)
+target_include_directories(aircraft_sim PRIVATE include)
+if(MSVC)
+    target_compile_options(aircraft_sim PRIVATE /W4)
+else()
+    target_compile_options(aircraft_sim PRIVATE -Wall -Wextra -Wpedantic)
+endif()
